@@ -1,4 +1,4 @@
-# Hello Hono App
+# Hono Todo API
 
 Hono で作成した Todo REST API サーバーです。
 

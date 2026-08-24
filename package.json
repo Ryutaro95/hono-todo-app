@@ -1,5 +1,5 @@
 {
-  "name": "hello-hono-app",
+  "name": "hono-todo-api",
   "type": "module",
   "scripts": {
     "dev": "tsx watch src/index.ts",

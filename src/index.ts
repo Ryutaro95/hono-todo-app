@@ -10,7 +10,7 @@ const app = new Hono();
 app.use("*", cors(), logger(), prettyJSON());
 
 app.get("/", (c) => {
-  return c.text("Hello Hono!");
+  return c.text("Hono Todo API");
 });
 
 app.route("/todos", todosRouter);
