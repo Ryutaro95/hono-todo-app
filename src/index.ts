@@ -15,6 +15,15 @@ app.get("/", (c) => {
 
 app.route("/todos", todosRouter);
 
+app.notFound((c) => {
+  return c.json({ message: "Not found" }, 404);
+});
+
+app.onError((err, c) => {
+  console.error(err);
+  return c.json({ message: "Internal Server Error" }, 500);
+});
+
 const port = 3000;
 console.log(`Server is running on http://localhost:${port}`);
 
