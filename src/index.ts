@@ -4,10 +4,16 @@ import { logger } from "hono/logger";
 import { cors } from "hono/cors";
 import { prettyJSON } from "hono/pretty-json";
 import todosRouter from "./routes/todos.js";
+import { authMiddleware, type Variables } from "./middlewares/auth.js";
 
-const app = new Hono();
+const app = new Hono<{ Variables: Variables }>();
 
 app.use("*", cors(), logger(), prettyJSON());
+
+app.get("/me", authMiddleware, (c) => {
+  const user = c.get("user");
+  return c.json({ id: user.id, name: user.name });
+});
 
 app.get("/", (c) => {
   return c.text("Hono Todo API");
